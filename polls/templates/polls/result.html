@@ -1,0 +1,21 @@
+{% load static %}
+<table width="200" align="center">
+  <tr>
+    <th colspan="3" scope="col"><img src= "{% static "polls/2020.png"  %}"  alt="US 2020" width="797" height="302"/></th>
+  </tr>
+  <tr>
+    <th colspan="3" scope="col"><h1>{{ question.question_text }}</h1></th>
+  </tr>
+  <tr>
+    <td><img src="{% static "polls/Trump.png" %}" alt="Trump" width="283" height="321" /></td>
+    <td><ul>
+      {% for choice in question.choice_set.all %}
+      <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+      {% endfor %}
+    </ul>
+    <p><a href="{% url 'polls:detail' question.id %}">Vote again?</a></p></td>
+    <td><img src="{% static "polls/Biden.png" %}" alt="Biden" width="283" height="321" /></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
